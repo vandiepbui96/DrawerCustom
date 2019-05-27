@@ -33,7 +33,9 @@ export default class App extends Component {
     // Ask to be the responder:
     onStartShouldSetPanResponder: (evt, gestureState) => false,
     onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
-    onMoveShouldSetPanResponder: (evt, gestureState) => true,
+    onMoveShouldSetPanResponder: (evt, gestureState) => {
+      return gestureState.dx != 0 && gestureState.dy != 0;  //chỉnh sửa lại chỗ này để kích hoạt toggle click
+    },
     onMoveShouldSetPanResponderCapture: (evt, gestureState) => false,
 
     onPanResponderGrant: (evt, gestureState) => {
